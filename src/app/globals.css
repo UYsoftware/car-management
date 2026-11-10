@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Tokeny: asfalt / lakier / bursztyn kontrolki */
+:root {
+  --bg: 242 244 245; --surface: 255 255 255; --ink: 20 24 29; --muted: 91 102 114; --line: 221 226 230;
+  --accent: 11 92 110; --warn: 168 98 0; --danger: 179 38 30; --dial: 20 24 29; --dialink: 237 239 241;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 14 17 20; --surface: 22 27 32; --ink: 235 238 240; --muted: 139 151 163; --line: 38 45 52;
+    --accent: 79 179 199; --warn: 232 163 61; --danger: 255 138 128; --dial: 6 8 10; --dialink: 235 238 240;
+  }
+}
+body { @apply bg-bg text-ink font-sans antialiased; font-feature-settings: "tnum" 1; }
+:focus-visible { outline: 2px solid rgb(var(--accent)); outline-offset: 2px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+@layer components {
+  .card { @apply rounded-card border border-line bg-surface; }
+  .btn { @apply inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-white
+    transition-opacity hover:opacity-90 disabled:opacity-50; }
+  .btn-quiet { @apply inline-flex items-center rounded-lg px-3 py-2 text-sm text-muted hover:bg-line/50 hover:text-ink; }
+  .input { @apply w-full rounded-lg border border-line bg-surface px-3 py-2.5 text-sm placeholder:text-muted/70; }
+}
